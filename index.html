@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة قادرون - Qaderoon Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 transition-all duration-300">
+
+    <!-- شريط إتاحة الوصول العلوي -->
+    <header class="bg-blue-600 text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex flex-wrap justify-between items-center gap-4">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-heartbeat text-yellow-300"></i> منصة قادرون
+            </h1>
+            <div class="flex items-center gap-2 bg-blue-700 p-2 rounded-lg">
+                <span class="text-sm">إتاحة الوصول:</span>
+                <button onclick="changeFontSize(2)" class="bg-white text-blue-600 px-3 py-1 rounded font-bold hover:bg-gray-100">+A</button>
+                <button onclick="changeFontSize(-2)" class="bg-white text-blue-600 px-3 py-1 rounded font-bold hover:bg-gray-100">-A</button>
+                <button onclick="speakPage()" class="bg-yellow-400 text-blue-900 px-3 py-1 rounded font-bold hover:bg-yellow-300 flex items-center gap-1">
+                    <i class="fas fa-volume-up"></i> قارئ الصوت
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوى المنصة -->
+    <main class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- الأطباء والاستشارات -->
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+            <div class="text-blue-600 text-3xl mb-3"><i class="fas fa-user-md"></i></div>
+            <h3 class="text-xl font-bold mb-2">الأطباء والاستشارات</h3>
+            <p class="text-gray-600 mb-4">احجز موعدك مع أفضل الأطباء والأخصائيين النفسيين ومراكز التأهيل.</p>
+            <button onclick="alert('جاري فتح نظام الحجز الطبي...')" class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-700">حجز موعد الآن</button>
+        </div>
+
+        <!-- المستشفيات والمراكز -->
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+            <div class="text-green-600 text-3xl mb-3"><i class="fas fa-hospital"></i></div>
+            <h3 class="text-xl font-bold mb-2">المستشفيات والمراكز</h3>
+            <p class="text-gray-600 mb-4">دليل شامل بأقرب المستشفيات ومراكز التأهيل المجهزة لأصحاب الهمم.</p>
+            <button onclick="alert('جاري عرض دليل المستشفيات والمراكز...')" class="bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700">تصفح الدليل</button>
+        </div>
+
+        <!-- مساحة الإبداع والتعبير -->
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+            <div class="text-yellow-500 text-3xl mb-3"><i class="fas fa-paint-brush"></i></div>
+            <h3 class="text-xl font-bold mb-2">مساحة الإبداع والتعبير</h3>
+            <p class="text-gray-600 mb-4">شارك إبداعاتك، كتاباتك، ورسوماتك مع مجتمع قادرون الملهم.</p>
+            <button onclick="alert('مرحباً بك في معرض إبداعات قادرون!')" class="bg-yellow-500 text-white px-4 py-2 rounded-lg w-full hover:bg-yellow-600">شارك عملك</button>
+        </div>
+
+        <!-- الخطوط الساخنة والدعم الدولي -->
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 md:col-span-2 lg:col-span-3">
+            <div class="text-red-600 text-3xl mb-3"><i class="fas fa-phone-alt"></i></div>
+            <h3 class="text-xl font-bold mb-2">الدعم النفسي والطوارئ الدولية</h3>
+            <p class="text-gray-600 mb-2">خطوط ساخنة مجانية ودعم نفسي متاح على مدار الساعة.</p>
+            <div class="bg-red-50 text-red-700 p-4 rounded-lg font-bold">
+                📞 الرقم الدولي المباشر: +800-QADEROON-HELP
+            </div>
+        </div>
+
+    </main>
+
+    <!-- المساعد الذكي -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <button onclick="toggleChat()" class="bg-blue-600 text-white p-4 rounded-full shadow-2xl text-2xl hover:bg-blue-700">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div id="aiChat" class="hidden absolute bottom-16 left-0 w-80 bg-white p-4 rounded-xl shadow-2xl border">
+            <h4 class="font-bold border-b pb-2 mb-2 text-blue-600">المساعد الذكي لقادرون 🤖</h4>
+            <p class="text-sm text-gray-600 mb-3">أهلاً بك يا آية! كيف يمكنني مساعدتك اليوم في منصة قادرون؟</p>
+            <input type="text" placeholder="اكتب سؤالك هنا..." class="w-full p-2 border rounded text-sm mb-2">
+            <button onclick="alert('المساعد الذكي متصل وجاهز للمساعدة!')" class="bg-blue-600 text-white w-full py-1 rounded text-sm">إرسال</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSize = 16;
+        function changeFontSize(step) {
+            currentSize = Math.max(12, Math.min(24, currentSize + step));
+            document.body.style.fontSize = currentSize + 'px';
+        }
+
+        function speakPage() {
+            if ('speechSynthesis' in window) {
+                const text = "مرحباً بكم في منصة قادرون لتمكين ودعم أصحاب الهمم. المنصة توفر خدمات الاستشارات الطبية، الدليل الصحي، ومساحة للإبداع والدعم النفسي.";
+                const msg = new SpeechSynthesisUtterance(text);
+                msg.lang = 'ar-SA';
+                window.speechSynthesis.speak(msg);
+            } else {
+                alert('عذراً، قارئ الصوت غير مدعوم في متصفحك.');
+            }
+        }
+
+        function toggleChat() {
+            document.getElementById('aiChat').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
